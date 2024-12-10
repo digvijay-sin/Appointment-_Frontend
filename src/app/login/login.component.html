@@ -1,0 +1,64 @@
+<div class="login_container">
+  <div class="content_container">
+    <mat-form-field class="input_container">
+      <mat-label>Enter your email</mat-label>
+      <input
+        class="input_login"
+        matInput
+        placeholder="pat@example.com"
+        [formControl]="email"
+        (blur)="updateErrorMessage()"
+        required
+      />
+      <mat-error *ngIf="email.invalid && email.touched">
+        <ng-container *ngIf="email.hasError('required')"
+          >You must enter a value</ng-container
+        >
+        <ng-container *ngIf="email.hasError('email')"
+          >Not a valid email</ng-container
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="input_container">
+      <mat-label>Enter your password</mat-label>
+      <input
+        [formControl]="password"
+        class="input_login"
+        matInput
+        [type]="hide() ? 'password' : 'text'"
+      />
+      <mat-error *ngIf="password.invalid && password.touched">
+        <ng-container *ngIf="password.hasError('required')"
+          >You must enter a value</ng-container
+        >
+        <ng-container *ngIf="password.hasError('minlength')"
+          >you must enter atleast 3 characters</ng-container
+        >
+      </mat-error>
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="clickEvent($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide()"
+      >
+        <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <div class="button_container">
+      <p-toast position="top-center" />
+      <p-button severity="contrast" [outlined]="true" (click)="submitLogin()"
+        >Submit</p-button
+      >
+    </div>
+
+    <mat-list class="company_title_container">
+      <mat-divider class="border"></mat-divider>
+      <p style="color: black">
+        New to the website <a routerLink="/register">sign-up</a>
+      </p>
+    </mat-list>
+  </div>
+</div>

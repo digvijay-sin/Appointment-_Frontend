@@ -1,0 +1,82 @@
+.register_container mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+
+.register_container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content_container {
+  height: auto;
+  padding: 1rem 1rem;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  gap: 1em;
+}
+
+.input_container {
+  width: 80%;
+}
+
+.button_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: 100%;
+
+  button {
+    height: 3rem;
+    width: 18%;
+    border: 0.5px solid black;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    color: rgb(46, 45, 45);
+    background-color: white;
+   
+  }
+}
+
+.company_title_container {
+  width: 45%;
+  text-align: center;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+}
+
+.company_name {
+  color: white;
+  font-weight: 400;
+  font-size: 2rem;
+  margin: 0.5rem;
+  padding: 0rem;
+  cursor: pointer;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}

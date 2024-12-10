@@ -1,0 +1,77 @@
+<app-navbar></app-navbar>
+<div class="main_container">
+  <div class="content_container">
+    <div class="complete_form">
+      <div class="form_container">
+        <mat-form-field>
+          <mat-label>Select Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="dp"
+            (dateChange)="onDateChange($event)"
+            [formControl]="datepick"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="dp"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #dp></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Reason for the appointment</mat-label>
+          <textarea
+            [formControl]="desc"
+            matInput
+            [(ngModel)]="description"
+            name="text"
+            placeholder="Ex. It makes me feel..."
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <div class="slots_container">
+        <p>Available time slots:</p>
+        <div *ngIf="slots.length > 0" class="slot_container">
+          <p
+            *ngFor="let slot of slots"
+            (click)="onSlotSelect(slot)"
+            [ngClass]="{ selected: isSelected(slot) }"
+          >
+            {{ slot.startTime }} - {{ slot.endTime }}
+          </p>
+        </div>
+
+        <div
+          *ngIf="errorMessage"
+          class="error-message"
+          class="slot_container"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50%;
+          "
+        >
+          <p>{{ errorMessage }}</p>
+        </div>
+        <div
+          *ngIf="!errorMessage && slots.length === 0"
+          class="slot_container"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50%;
+          "
+        >
+          <p>No slots available for the selected date!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="button_container">
+      <p-toast position="top-center" />
+      <p-button (click)="submit()">Submit</p-button>
+    </div>
+  </div>
+</div>
